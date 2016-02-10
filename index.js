@@ -1,6 +1,21 @@
 // https://api.slack.com/types/channel
 module.exports = function( b9 ){
 
+  // define public property
+  b9.channels = [];
+
+  // define public method
+  b9.channel = function( key ){
+    var found;
+    b9.channels.every(function( chan ){
+      if ( chan.id === key || chan.name === key ){
+        found = chan;
+      }
+      return !found;
+    });
+    return found;
+  };
+
   // initialize the channels list
   // https://api.slack.com/methods/rtm.start
   b9.on('rtm.start', function( arg ){

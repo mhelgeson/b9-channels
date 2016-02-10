@@ -59,4 +59,10 @@ describe('src/index', function(){
     assert.equal( bot.channels[1].is_archived, false );
   });
 
+  it('finds a channel by name or id',function(){
+    assert.equal( bot.channel('C002').name, 'Random' );
+    assert.equal( bot.channel('Random').id, 'C002' );
+    assert.equal( bot.channel('C007'), undefined );
+  });
+
 });
